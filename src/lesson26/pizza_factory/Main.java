@@ -21,11 +21,40 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please choose your Pizza: 1 - Hawaii, 2 - Salami, 3 - Mozzarella");
-        int choice = scanner.nextInt();
+        PizzaFactory factory = new PizzaFactory();
+        Pizza salami = factory.createPizza("1");
+        salami.orderPizza();
 
-        PizzaFactory.placeOrderOfPizza(choice);
+        System.out.println();
+        Pizza mozzarella = factory.createPizza("2");
+        mozzarella.orderPizza();
+
+        System.out.println();
+        Pizza hawaii = factory.createPizza("3");
+        hawaii.orderPizza();
+
+        System.out.println("===== with scanner =====");
+
+        Scanner scanner = new Scanner(System.in);
+
+        do {
+            System.out.println("Please choose your Pizza: 1 - Salami, 2 - Mozzarella, 3 - Hawaii");
+            String pizzaChoice = scanner.nextLine();
+
+            Pizza newPizza = factory.createPizza(pizzaChoice);
+            while (newPizza == null) {
+                System.out.println("You've made wrong choice. Please choose your Pizza: 1 - Salami, 2 - Mozzarella, 3 - Hawaii");
+                pizzaChoice = scanner.nextLine();
+                newPizza = factory.createPizza(pizzaChoice);
+            }
+
+            newPizza.orderPizza();
+
+            System.out.println("Do you want to order another Pizza? Press no if No / any other key if Yes");
+
+        } while (!scanner.nextLine().equalsIgnoreCase("no"));
+        System.out.println("Thank you for your order! We hope to see you soon!");
+
 
     }
 }
