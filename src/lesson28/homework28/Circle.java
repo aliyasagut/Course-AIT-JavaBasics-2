@@ -2,7 +2,7 @@ package lesson28.homework28;
 
 public class Circle extends Shape {
     private int radius;
-    private static double PI = 3.1415;
+    private static double PI = 3.14;
 
 
     public Circle(int radius) {

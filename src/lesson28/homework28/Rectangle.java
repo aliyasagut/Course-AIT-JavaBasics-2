@@ -1,23 +1,23 @@
 package lesson28.homework28;
 
 public class Rectangle extends Shape {
-    private int a;
-    private int b;
+    private int length;
+    private int width;
 
     public Rectangle(int a, int b) {
-        this.a = a;
-        this.b = b;
+        this.length = a;
+        this.width = b;
         this.name = "Rectangle";
     }
 
 
     @Override
     public double calculateSquare() {
-        return a * b;
+        return length * width;
     }
 
     @Override
     public double calculatePerimeter() {
-        return 2 * (a + b);
+        return 2 * (length + width);
     }
 }
