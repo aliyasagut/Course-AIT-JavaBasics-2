@@ -22,5 +22,28 @@ public class Application {
 
         Car passemgerCar = new PassengerCar("XC90", "Volvo", 2020, "Red");
         passemgerCar.move();
+
+        Movable passengerCarMov = new PassengerCar("car", "Mercedes", 2021, "red");
+        passemgerCar.move();
+        passemgerCar.stop();
+
+        Car truckCar = new Truck("Truck", "MAN", 2020, "black", 5000, 100);
+        Truck truck = new Truck("SuperTruck", "Volvo", 2019, "yellow", 5000, 500);
+
+        System.out.println(truck);
+
+        truck.move();
+        truck.load(2000);
+        truck.move();
+        truck.setCurrentFuel(200);
+        truck.move();
+
+        truck.stop();
+
+        truck.load(4000);
+
+        truck.unload(10000);
+
+        truck.unload(1000);
     }
 }
