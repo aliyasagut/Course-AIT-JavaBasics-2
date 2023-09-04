@@ -37,20 +37,25 @@ public class Main {
         Employee employee2 = new WageEmployee("Ron", "Weasley", 35.0, 12);
         Employee employee3 = new SalesManager("Hermione", "Granger", 30.5, 100.6, 0.1);
         Employee employee4 = new SalesManager("Nevile", "Longbottom", 25.5, 200.6, 0.13);
+        Employee employee5 = new SalesManager("Mary", "Brown", 85, 110000, 0.5);
+        Employee employee6 = new WageEmployee("Harry", "While", 60, 12);
 
         Company company = new Company(6);
         System.out.println("Add new employee: " + company.addEmployee(employee1));
         System.out.println();
         company.display();
 
-        company.addEmployee(employee2);
-        company.addEmployee(employee3);
-        company.addEmployee(employee4);
+        System.out.println(company.addEmployee(employee2));
+        System.out.println(company.addEmployee(employee3));
+        System.out.println(company.addEmployee(employee4));
+        System.out.println(company.addEmployee(employee5));
+        System.out.println(company.addEmployee(employee6)); //true
+        System.out.println(company.addEmployee(employee1)); //false
 
         System.out.println();
         company.display();
 
-        System.out.println("\nRemove employee: " + company.removeEmployee(employee1));
+        System.out.println("\nRemove employee: " + company.removeEmployee(employee3));
         System.out.println();
         company.display();
 
@@ -59,7 +64,7 @@ public class Main {
 
         System.out.println("\n-----To String-----");
         Employee[] employees = {employee1, employee2, employee3, employee4};
-        for (Employee employee : employees){
+        for (Employee employee : employees) {
             System.out.println(employee.toString());
         }
 
@@ -70,23 +75,17 @@ public class Main {
         }
 
         System.out.println("\n-----Sort by Second name------");
-        Arrays.sort(employees);
-        for (Employee employee : employees){
-            System.out.println(employee.toString());
-        }
+        company.sortEmployees();
+        company.display();
 
         System.out.println("\n-----Sort by ID------");
-        Arrays.sort(employees, new IdComparator());
-        for (Employee employee : employees){
-            System.out.println(employee.toString());
-        }
+//        company.sortEmployeesByID();
+        company.sortEmployeesByIDwithAnonym();
+        company.display();
 
         System.out.println("\n-----Sort by first name and id------");
-        Arrays.sort(employees, new NameIdComparator());
-        for (Employee employee : employees){
-            System.out.println(employee.toString());
-        }
-
+        company.sortEmployeesByNameThenId();
+        company.display();
 
     }
 }
