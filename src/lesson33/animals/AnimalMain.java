@@ -3,6 +3,7 @@ package lesson33.animals;
 import lesson28.interfaces2.A;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class AnimalMain {
     /*
@@ -25,18 +26,31 @@ public class AnimalMain {
 
         for (Animal animal : animals)
             System.out.println(animal);
+
         System.out.println("\n---Sort by Name---");
-        Arrays.sort(animals);
+//        AnimalComparatorInterface comparatorByName = (a, b) -> a.name.compareTo(b.name);
+        Comparator<Animal> comparatorByName = (a, b) -> a.name.compareTo(b.name);
+        //Arrays.sort(animals, (a, b) -> a.name.compareTo(b.name));
+        Arrays.sort(animals, comparatorByName);
+
         for (Animal animal : animals)
             System.out.println(animal);
 
         System.out.println("\n---Sort by Weight---");
-        Arrays.sort(animals, new WeightComparator());
+//        AnimalComparatorInterface comparatorByWeight = (a, b) -> Integer.compare(a.weight, b.weight);
+        Comparator<Animal> comparatorByWeight = (a, b) -> Integer.compare(a.weight, b.weight);
+        Arrays.sort(animals, comparatorByWeight);
         for (Animal animal : animals)
             System.out.println(animal);
 
         System.out.println("\n---Sort by last letter of name---");
-        Arrays.sort(animals, new LastLetterComparator());
+//        AnimalComparatorInterface comparatorByLastChar = (a, b) -> {
+        Comparator<Animal> comparatorByLastChar = (a, b) -> {
+            char lastCharA1 = a.name.charAt(a.name.length()-1);
+            char lastCharA2 = b.name.charAt(b.name.length()-1);
+            return Character.compare(lastCharA1,lastCharA2);
+        };
+        Arrays.sort(animals, comparatorByLastChar);
         for (Animal animal : animals)
             System.out.println(animal.name);
 
