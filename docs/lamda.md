@@ -23,3 +23,63 @@
 - (n) -> 2.0/n;
 - (n) -> (n % 2)==0; возващет булеан
 - n -> 1/n;
+
+## Примеры
+
+@FunctionalInterface
+```sh
+public interface OurTestInterface {
+
+    boolean test(int n, int m);
+}
+```
+@FunctionalInterface
+```sh
+public interface StringTestInterface {
+
+    boolean test (String str1, String str2);
+}
+```
+Main
+```sh
+public static void main(String[] args) {
+OurTestInterface isDevided = (a, b) -> (a % b) == 0;
+System.out.println("A is devided by b without remainder? " + isDevided.test(10, 2));
+
+OurTestInterface isMore = (a, b) -> a > b;
+System.out.println("Is A more than B? " + isMore.test(10, 2));
+
+OurTestInterface isEqual = (a, b) -> a == b;
+System.out.println("A = B ? " + isEqual.test(10, 2));
+
+StringTestInterface isPart = (str1, str2) -> str1.indexOf(str2) != -1;
+String str1 = "This is a test";
+System.out.println("Is string2 a prt of string1 ? " + isPart.test(str1, "is"));
+
+StringTestInterface isEqualStr = (a, b) -> a.equals(b);
+System.out.println(isEqualStr.test("qwerty", "qwertz"));
+}
+```
+@FunctionalInterface
+```sh
+public interface NumericInterface {
+
+    int method1 (int n);
+}
+```
+Main
+```sh
+NumericInterface smallDevidor = n -> {
+
+            int res = 1;
+            n = n < 0 ? -n : n;
+
+            for (int i = 2; i <= n; i++) {
+                if ((n % i) == 0){
+                    res = i;
+                    break;
+                }
+            }
+            return res;
+        };
+```
