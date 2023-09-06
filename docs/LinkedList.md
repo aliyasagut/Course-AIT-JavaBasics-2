@@ -1,5 +1,5 @@
 ## LinkedList
-lesson37
+lesson 37-38
 
 ## Конструкторы:
     LinkedList() - Пустой список
