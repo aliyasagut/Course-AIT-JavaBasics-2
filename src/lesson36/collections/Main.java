@@ -40,7 +40,7 @@ public class Main {
 //        names.add(5, "Jack"); // невозможно добавить по индексу, которого нет
 //        System.out.println(names);
 
-        names.add(3, "Jack"); // невозможно добавить по индексу, которого нет
+        names.add(3, "Jack");
         System.out.println(names);
 
         List<String> listCapacity = new ArrayList<>(20);
