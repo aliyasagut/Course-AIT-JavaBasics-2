@@ -25,6 +25,8 @@ public class MapExercises {
         ourMap.put("c", "hi");
         ourMap.put("d", "there");
 
+        MapExercises mapExercises = new MapExercises();
+        System.out.println(mapExercises.createNewABMap(ourMap));
 //        System.out.println(createNewABMap(ourMap));
 
     }
