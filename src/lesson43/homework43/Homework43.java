@@ -37,4 +37,12 @@ public class Homework43 {
         }
         return map;
     }
+
+    public Map<String, Boolean> createStrBooleanMap2Variant(String[] strings) {
+        Map<String, Boolean> map = new LinkedHashMap<>();
+        for (String string : strings){
+            map.put(string, map.containsKey(string));
+        }
+        return map;
+    }
 }
