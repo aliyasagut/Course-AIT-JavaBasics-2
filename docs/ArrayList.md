@@ -16,6 +16,10 @@ List<String> names = new ArrayList<>();
 
 https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 
+List<Integer> list1 = Arrays.asList(1, 2, 300, 4); // this list is amutable
+
+List<Integer> list2 = List.of(5, 2, 300, 8); // this list can be changed
+
 ## Методы
 
   - Метод add() - добавление элемента в конец листа, возвращает true, если удалось добавить.
