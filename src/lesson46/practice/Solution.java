@@ -43,6 +43,7 @@ public class Solution {
             }
         }
         return deque.isEmpty();
+//        return true;
     }
 
     public static void main(String[] args) {
