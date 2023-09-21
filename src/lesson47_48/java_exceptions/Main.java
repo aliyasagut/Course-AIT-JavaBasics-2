@@ -1,6 +1,4 @@
-package lesson47.java_exceptions;
-
-import java.util.Scanner;
+package lesson47_48.java_exceptions;
 
 public class Main {
     /*
@@ -94,11 +92,9 @@ public class Main {
         for (int i = 0; i < numbers.length; i++) {
             try {
                 System.out.println(numbers[i] + " / " + dividers[i] + " = " + numbers[i] / dividers[i]);
-            }
-            catch (ArithmeticException e){
+            } catch (ArithmeticException e) {
                 System.out.println("Can't divide by zero!");
-            }
-            catch (ArrayIndexOutOfBoundsException e){
+            } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Dividers array is finished and element was not found");
             }
         }
@@ -119,19 +115,88 @@ public class Main {
          */
         System.out.println("-----------------------------");
         try {
-            int a = 100/1;
+            int a = 100 / 1;
             System.out.println(a);
-        }
-        catch (ArithmeticException e){
+        } catch (ArithmeticException e) {
             System.out.println(e.getMessage());
-        }
-        finally {
+        } finally {
             System.out.println("This is block finally");
         }
 
         System.out.println("we are out of try-catch-finally");
 
+        System.out.println("-------------------------------------");
 
+        System.out.println(example());
+        System.out.println();
+
+        for (int i = 0; i < 3; i++) {
+            example1(i);
+        }
+
+        /*
+        1. finally не существует без блока try
+        2. finally не является обязательным блоком
+        3. если исключения не происходит, то finally выполняется вслед за блоком try, если происходит то после catch
+        4. Код в finally выполняется, даже если в блоке try содержится команды, такие как return, break, continue
+        5. блоки try-finally могут существовать без блока catch
+         */
+
+        System.out.println("-----------------------");
+        checkCandidates(7, 35);
 
     }
+
+    public static int example() {
+        try {
+            return 1;
+        } finally {
+            System.out.println("Finally runs even when return is present");
+        }
+
+    }
+
+    public static void example1(int num) {
+        int t;
+        int[] ints = new int[2];
+
+        System.out.println("received " + num);
+        System.out.println();
+
+        try {
+            switch (num) {
+                case 0:
+                    t = 20 / num; // division by 0
+                    break;
+                case 1:
+                    ints[10] = 100; // incorrect index
+                    break;
+                case 2:
+                    return; // return from block try
+
+            }
+        } catch (ArithmeticException e) {
+            System.out.println("Do not divide by zero");
+            return;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("No such index is found");
+        } finally {
+            System.out.println("Finally always executes");
+        }
+    }
+
+    /*
+    throw - бросать исключение
+
+    throw new exception_class ("message")
+     */
+
+    public static void checkCandidates(int age, int weight) {
+        if (age < 10 && weight < 40) {
+            throw new ArithmeticException("You are too jung for our section");
+        } else {
+            System.out.println("Welcome on the board!");
+        }
+    }
+
 }

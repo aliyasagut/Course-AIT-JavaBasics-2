@@ -1,4 +1,4 @@
-package lesson47;
+package lesson47_48;
 
 import java.util.Stack;
 

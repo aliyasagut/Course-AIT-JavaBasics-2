@@ -1,4 +1,4 @@
-package lesson47.homework47;
+package lesson47_48.homework47;
 
 public class Homework {
     /*
