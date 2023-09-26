@@ -20,6 +20,7 @@ class SolutionTest {
         int min = 5;
         int[] expected = {0, 1, 2, 3, 1, 1, 2, 3, 4};
 
+        assertArrayEquals(expected, solution.countOrdersNumberMy(orderTimes, min));
         assertArrayEquals(expected, solution.countOrdersNumber(orderTimes, min));
     }
 
@@ -29,6 +30,7 @@ class SolutionTest {
         int min = 5;
         int[] expected = {0, 1, 2, 3, 4, 5};
 
+        assertArrayEquals(expected, solution.countOrdersNumberMy(orderTimes, min));
         assertArrayEquals(expected, solution.countOrdersNumber(orderTimes, min));
     }
 
@@ -38,6 +40,7 @@ class SolutionTest {
         int min = 5;
         int[] expected = {0, 0, 0, 0};
 
+        assertArrayEquals(expected, solution.countOrdersNumberMy(orderTimes, min));
         assertArrayEquals(expected, solution.countOrdersNumber(orderTimes, min));
     }
 

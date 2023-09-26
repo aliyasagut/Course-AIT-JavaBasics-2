@@ -25,12 +25,12 @@ public class Solution {
     3. создать новую ArrayDeque
     4.
      */
-    public int[] countOrdersNumber(long[] orderTimes, int minutes) {
+    public int[] countOrdersNumberMy(long[] orderTimes, int minutes) {
         int[] result = new int[orderTimes.length];
         int millis = minutes * 60 * 1000;
 
         Deque<Long> myDeque = new ArrayDeque<>();
-        myDeque.addFirst(Long.valueOf(orderTimes[orderTimes.length - 1]));
+        myDeque.addFirst(orderTimes[orderTimes.length - 1]);
 
         int cursor = orderTimes.length - 2;
         int resultCursor = orderTimes.length - 1;
@@ -54,16 +54,38 @@ public class Solution {
         return result;
     }
 
+    public int[] countOrdersNumber(long[] orderTimes, int minutes) {
+        int[] res = new int[orderTimes.length];
+        Deque<Long> queue = new ArrayDeque<>();
+        long millis = minutes * 60L * 1000;
+        int i = 0;
+
+        for (long orderTime : orderTimes) {
+            queue.addLast(orderTime);
+            while (orderTime - queue.getFirst() > millis) {
+                queue.removeFirst();
+            }
+            res[i++] = queue.size() - 1;
+        }
+        return res;
+    }
+
+
     public static void main(String[] args) {
 
         long[] orderTimes = {1_000_000, 1_200_000, 1_250_000, 1_300_000, 1_600_000, 1_700_000, 1_800_000, 1_850_000, 1_890_000};
         Solution solution = new Solution();
 
-        int[] result = solution.countOrdersNumber(orderTimes, 5);
+        int[] result1 = solution.countOrdersNumberMy(orderTimes, 5);
 
+        for (int i = 0; i < result1.length; i++) {
+            System.out.print(result1[i] + " ");
+        }
+        System.out.println();
+        int[] result2 = solution.countOrdersNumber(orderTimes, 5);
 
-        for (int i = 0; i < result.length; i++) {
-            System.out.print(result[i] + " ");
+        for (int i = 0; i < result2.length; i++) {
+            System.out.print(result2[i] + " ");
         }
 
     }
