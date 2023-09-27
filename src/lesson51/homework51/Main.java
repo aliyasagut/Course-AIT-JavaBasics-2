@@ -1,6 +1,8 @@
 package lesson51.homework51;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -12,7 +14,7 @@ public class Main {
     значит файлы одинаковые и программа также выводит на экран соответствующее сообщение.
     Предварительно создать файлы в корневой директории first.txt, second.txt
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         try (FileInputStream fileInputStream1 = new FileInputStream("output.txt");
              FileInputStream fileInputStream2 = new FileInputStream("newOutput.txt")) {
@@ -49,5 +51,34 @@ public class Main {
                 IOException e) {
             System.out.println(e.getMessage());
         }
+
+        System.out.println("-------------------------------------");
+
+        compareFiles("output.txt", "newOutput.txt");
+
     }
+
+    public static void compareFiles(String file1, String file2) throws FileNotFoundException {
+
+        int i, j;
+        try (FileInputStream f1 = new FileInputStream(file1);
+             FileInputStream f2 = new FileInputStream(file2)) {
+
+            do {
+                i = f1.read();
+                j = f2.read();
+                if (i != j) break;
+            } while (i != -1 && j != -1);
+
+            if(i != j){
+                System.out.println("Files are differ");
+            } else {
+                System.out.println("Files are equal");
+            }
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
 }
