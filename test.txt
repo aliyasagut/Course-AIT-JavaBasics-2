@@ -1,5 +1,5 @@
-1
-2
-3
-4
-5
+Eugene, Black, notebook, 1000
+Peter, While, mac, 800
+Eugene, Black, keyboard, 25
+John, Green, Mouspad, 5
+Peter, While, mobile, 600
