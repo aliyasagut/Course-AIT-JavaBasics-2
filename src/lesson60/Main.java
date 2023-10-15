@@ -187,11 +187,9 @@ public class Main {
      */
 
     public static Map<Boolean, List<String>> partitioningList (List<String> list){
-        return list.stream().collect(Collectors.partitioningBy(s -> s.length()>4));
+        return list.stream()
+                .collect(Collectors.partitioningBy(s -> s.length()>4));
     }
-
-
-
 
 }
 
